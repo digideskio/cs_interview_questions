@@ -1,7 +1,7 @@
 /**
  * @author Chris Arriola
  *
- * Class for Array and String questions
+ * Class that represents an integer link list node.
  */
 public class IntNode {
     IntNode next = null;
