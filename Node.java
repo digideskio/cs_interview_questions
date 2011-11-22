@@ -11,7 +11,17 @@ public class Node {
         data = d;
     }
 
+    public void appendToTail(Node n) {
+
+        Node curr = this;
+        while (curr.next != null) {
+            curr = curr.next;
+        }
+        curr.next = n;
+    }
+
     public void appendToTail(int d) {
+
         Node tail = new Node(d);
 
         Node curr = this;

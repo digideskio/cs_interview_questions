@@ -192,6 +192,40 @@ public class LinkedLists {
     }
 
     /**
+     * Given a circular linked list, this function will return the node
+     * at the beginning of the loop.
+     *
+     * Ex.
+     * input: (A->B->C->D->E->C)
+     * output: C
+     */
+    public static Node findBeginningOfLoop(Node n) {
+
+        if (n == null)
+            return null;
+
+        Node nSingle = n;
+        Node nDouble = n;
+
+        // Keep looping until nSingle == nDouble
+        do {
+            nSingle = nSingle.next;
+            nDouble = nDouble.next.next;
+        } while (nSingle != nDouble);
+
+        // Once they are equal, set one at head, and then keep incrementing
+        // each pointer by one until they are equal. The position when they are
+        // equal is the beginning of the loop.
+        nDouble = n;
+        while (nDouble != nSingle) {
+            nDouble = nDouble.next;
+            nSingle = nSingle.next;
+        }
+
+        return nSingle;
+    }
+
+    /**
      * @args Not used.
      */
     public static void main(String[] args) {
@@ -203,6 +237,18 @@ public class LinkedLists {
         Node n2 = new Node(9);
         n2.appendToTail(9);
         n2.appendToTail(9);
+
+        Node nBeginning = new Node(4);
+        Node nEnd = new Node(8);
+        Node nLoop = new Node(1);
+        nLoop.appendToTail(2);
+        nLoop.appendToTail(3);
+        nLoop.appendToTail(nBeginning);
+        nLoop.appendToTail(5);
+        nLoop.appendToTail(6);
+        nLoop.appendToTail(7);
+        nLoop.appendToTail(nEnd);
+        nEnd.next = nBeginning;
 
         Node nodes[] = {
             generateRandomNodes(5),
@@ -251,5 +297,12 @@ public class LinkedLists {
         n2.print();
         System.out.println("=");
         addLinkLists(n1, n2).print();
+
+        //
+        // Test findBeginningOfLoop()
+        //
+        System.out.println("\nTesting findBeginningOfLoop()...\n");
+        Node nResult = findBeginningOfLoop(nLoop);
+        System.out.println("Beginning of Loop: " + nResult.data);
     }
 }
