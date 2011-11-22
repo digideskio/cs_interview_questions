@@ -10,7 +10,7 @@ public class LinkedLists {
     /**
      * Removes duplicates from an unsorted linked list using a buffer as storage.
      */
-    public static void removeDuplicates(Node head) {
+    public static void removeDuplicates(IntNode head) {
 
         if (head == null || head.next == null)
             return;
@@ -18,11 +18,11 @@ public class LinkedLists {
         // Create new buffer
         HashMap<Integer, Integer> buffer = new HashMap<Integer, Integer>();
        
-        // Loop through each Node and look if the node is in the hashmap, 
+        // Loop through each IntNode and look if the node is in the hashmap, 
         // if so, delete. otherwise, add to hashmap.
         buffer.put(head.data, 1);
-        Node prev = head;
-        Node curr = head.next;
+        IntNode prev = head;
+        IntNode curr = head.next;
         while (curr != null) {
             if (buffer.containsKey(curr.data)) {
                 // delete
@@ -39,7 +39,7 @@ public class LinkedLists {
     /**
      * Remove duplicates from an unsorted linked list without using a buffer.
      */
-    public static void removeDuplicates2(Node head) {
+    public static void removeDuplicates2(IntNode head) {
 
         if (head == null || head.next == null)
             return;
@@ -49,11 +49,11 @@ public class LinkedLists {
         // at the next node over (curr). We look at the value of curr and compare
         // it to values starting from head until prev, if it exists, remove,
         // otherwise, don't remove. Thereafter, we increment prev and curr by 1.
-        Node prev = head;
-        Node curr = prev.next;
+        IntNode prev = head;
+        IntNode curr = prev.next;
         
         while (curr != null) {
-            Node temp = head;
+            IntNode temp = head;
             while (temp != prev.next) {
                 if (curr.data == temp.data) {
                     // delete
@@ -75,13 +75,13 @@ public class LinkedLists {
     /**
      * Retrieves the nth to last element of a singly linked list.
      */
-    public static Node nthToLast(Node head, int n) {
+    public static IntNode nthToLast(IntNode head, int n) {
         
         if (head == null)
             return null;
 
-        Node n1 = head;
-        Node n2 = head;
+        IntNode n1 = head;
+        IntNode n2 = head;
 
         // Move n2 so that n1 and n2 are n-1 distance apart
         for (int i = 0; i < n-1; i++) {
@@ -101,7 +101,7 @@ public class LinkedLists {
      * Deletes a node in the middle of a single linked list, given only
      * access to that node.
      */
-    public static void deleteMiddleNode(Node node) {
+    public static void deleteMiddleIntNode(IntNode node) {
         
         if (node == null)
             return;
@@ -118,19 +118,19 @@ public class LinkedLists {
     }
 
     /**
-     * Generates 'n' random Nodes.
+     * Generates 'n' random IntNodes.
      */
-    private static Node generateRandomNodes(int n) {    	
+    private static IntNode generateRandomIntNodes(int n) {    	
 
         if (n == 0)
             return null;
 
-        Node newNode = new Node((int)(Math.random()*10));
+        IntNode newIntNode = new IntNode((int)(Math.random()*10));
     	for (int i = 1; i < n; i++) {
-            newNode.appendToTail((int)(Math.random()*10));
+            newIntNode.appendToTail((int)(Math.random()*10));
     	}
 
-        return newNode;
+        return newIntNode;
     }
 
     /**
@@ -141,7 +141,7 @@ public class LinkedLists {
      * input: (3->1->5) + (5->9->2)
      * output: 8->0->8
      */
-    public static Node addLinkLists(Node n1, Node n2) {
+    public static IntNode addLinkLists(IntNode n1, IntNode n2) {
 
         // null cases
         if (n1 == null)
@@ -150,7 +150,7 @@ public class LinkedLists {
             return n1;
 
         // start addition
-        Node nodeSum = null;
+        IntNode nodeSum = null;
         int carry = 0;
         while (n1 != null || n2 != null) {
             int digitSum = 0;
@@ -168,7 +168,7 @@ public class LinkedLists {
             int digitData = (digitSum+carry) % 10;
             carry = digitSum / 10;
             if (nodeSum == null) {
-                nodeSum = new Node(digitData);
+                nodeSum = new IntNode(digitData);
             } else {
                 nodeSum.appendToTail(digitData);
             }
@@ -199,13 +199,13 @@ public class LinkedLists {
      * input: (A->B->C->D->E->C)
      * output: C
      */
-    public static Node findBeginningOfLoop(Node n) {
+    public static IntNode findBeginningOfLoop(IntNode n) {
 
         if (n == null)
             return null;
 
-        Node nSingle = n;
-        Node nDouble = n;
+        IntNode nSingle = n;
+        IntNode nDouble = n;
 
         // Keep looping until nSingle == nDouble
         do {
@@ -229,18 +229,18 @@ public class LinkedLists {
      * @args Not used.
      */
     public static void main(String[] args) {
-        Node n1 = new Node(1);
+        IntNode n1 = new IntNode(1);
         n1.appendToTail(2);
         n1.appendToTail(3);
         n1.appendToTail(4);
 
-        Node n2 = new Node(9);
+        IntNode n2 = new IntNode(9);
         n2.appendToTail(9);
         n2.appendToTail(9);
 
-        Node nBeginning = new Node(4);
-        Node nEnd = new Node(8);
-        Node nLoop = new Node(1);
+        IntNode nBeginning = new IntNode(4);
+        IntNode nEnd = new IntNode(8);
+        IntNode nLoop = new IntNode(1);
         nLoop.appendToTail(2);
         nLoop.appendToTail(3);
         nLoop.appendToTail(nBeginning);
@@ -250,10 +250,10 @@ public class LinkedLists {
         nLoop.appendToTail(nEnd);
         nEnd.next = nBeginning;
 
-        Node nodes[] = {
-            generateRandomNodes(5),
-            generateRandomNodes(8),
-            generateRandomNodes(12)
+        IntNode nodes[] = {
+            generateRandomIntNodes(5),
+            generateRandomIntNodes(8),
+            generateRandomIntNodes(12)
         };
 
         //
@@ -279,12 +279,12 @@ public class LinkedLists {
         }
 
         //
-        // Test deleteMiddleNode()
+        // Test deleteMiddleIntNode()
         //
         System.out.println("\nDeleting middle node...\n");
         System.out.print("Original: ");
         n1.print();
-        deleteMiddleNode(n1.next.next);
+        deleteMiddleIntNode(n1.next.next);
         System.out.print("Output: ");
         n1.print();
 
@@ -302,7 +302,7 @@ public class LinkedLists {
         // Test findBeginningOfLoop()
         //
         System.out.println("\nTesting findBeginningOfLoop()...\n");
-        Node nResult = findBeginningOfLoop(nLoop);
+        IntNode nResult = findBeginningOfLoop(nLoop);
         System.out.println("Beginning of Loop: " + nResult.data);
     }
 }

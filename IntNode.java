@@ -3,17 +3,17 @@
  *
  * Class for Array and String questions
  */
-public class Node {
-    Node next = null;
+public class IntNode {
+    IntNode next = null;
     int data;
 
-    public Node(int d) {
+    public IntNode(int d) {
         data = d;
     }
 
-    public void appendToTail(Node n) {
+    public void appendToTail(IntNode n) {
 
-        Node curr = this;
+        IntNode curr = this;
         while (curr.next != null) {
             curr = curr.next;
         }
@@ -22,9 +22,9 @@ public class Node {
 
     public void appendToTail(int d) {
 
-        Node tail = new Node(d);
+        IntNode tail = new IntNode(d);
 
-        Node curr = this;
+        IntNode curr = this;
         while (curr.next != null) {
             curr = curr.next;
         }
@@ -34,7 +34,7 @@ public class Node {
     public void print() {
         System.out.print(data);
 
-        Node curr = next;
+        IntNode curr = next;
         while (curr != null) {
             System.out.print("->" + curr.data);
             curr = curr.next;
