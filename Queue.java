@@ -14,10 +14,10 @@ public class Queue<V> {
 
     public void enqueue(V data) {
         if (first == null) {
-            first = new Node(data);
+            first = new Node<V>(data);
             last = first;
         } else {
-            last.next = new Node(data);
+            last.next = new Node<V>(data);
             last = last.next;
         }
     }
