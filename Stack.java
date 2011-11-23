@@ -20,7 +20,9 @@ public class Stack<V> {
     }
 
     public void push(V data) {
-        Node n = new Node(data);
+
+        // NOTE: not checking if data pushed is the same as data on top.
+        Node<V> n = new Node<V>(data);
         n.next = top;
         top = n;
     }

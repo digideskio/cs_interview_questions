@@ -44,6 +44,10 @@ public class StackMin {
 
     public int getMin() {
 
+        if (min == null) {
+            return Integer.MAX_VALUE;
+        }
+            
         return min.data;
     }
 }
