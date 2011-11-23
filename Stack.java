@@ -1,7 +1,7 @@
 /**
- * @author Chris Arriola
- *
  * Class implementing a Stack
+ *
+ * @author Chris Arriola
  */
 public class Stack<V> {
     Node<V> top = null;
