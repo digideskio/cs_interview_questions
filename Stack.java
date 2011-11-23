@@ -9,6 +9,7 @@ public class Stack<V> {
     /**
      * A pop from the stack.
      */
+    @SuppressWarnings("unchecked")
     public V pop() {
 
         if (top == null)
@@ -25,5 +26,9 @@ public class Stack<V> {
         Node<V> n = new Node<V>(data);
         n.next = top;
         top = n;
+    }
+
+    public boolean isEmpty() {
+        return (top == null ? true : false);
     }
 }
