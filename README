@@ -5,3 +5,32 @@ Description: Solutions to various common interview programming problems. This
     contains questions from the book "Cracking the Coding Interview" (written
     in Java).
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+General Advice for Technical Questions:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Resolve ambiguity by asking questions.
+2. Design an algorithm.
+3. Write pseudo-code first (mention to interviewer that you're writing pseudocode).
+4. Write your code, not too slow and not too fast.
+5. Test your code and carefully fix any mistakes.
+
+Five Algorithm Approaches:
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Examplify - write out specific examples of the problem, and see if you can figure
+    out a general rule.
+
+2. Pattern Matching - consider what problems the algorithm is similar to, and figure
+    if you can modify the solution to develop an algorithm for this problem.
+
+3. Simplify & Generalize - Change a constraint (data type, size, stc.) to simplify
+    the problem. Then try to solve it. Once you have an algorithm for the "simplified"
+    problem, generalize the problem again.
+
+4. Base Case & Build - Solve the algorithm for a base case then try to solve if for
+    elements one and two, assuming that you have the answer for element one. Then,
+    try to solve it for elements one, two, and three, assuming that you have the
+    answer to elements one and two.
+
+5. Data Structure Brainstorm - Simply run through a list of data structures and
+    try to apply each one (brute force ftw!!!).
