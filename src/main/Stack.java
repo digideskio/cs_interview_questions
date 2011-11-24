@@ -6,14 +6,6 @@
 public class Stack<V> {
     Node<V> top = null;
 
-    public boolean isEmpty() {
-        return (top == null ? true : false);
-    }
-
-    public V peek() {
-        if (top == null ? null : top.data);
-    }
-
     /**
      * A pop from the stack.
      */
@@ -34,6 +26,11 @@ public class Stack<V> {
         Node<V> n = new Node<V>(data);
         n.next = top;
         top = n;
+    }
+
+
+    public V peek() {
+        return (top == null ? null : top.data);
     }
 
     public boolean isEmpty() {
