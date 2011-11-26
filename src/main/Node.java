@@ -5,27 +5,29 @@
  */
 public class Node<V> {
 
-    Node next = null;
+    Node<V> next = null;
     V data;
 
     public Node(V data) {
         this.data = data;
     }
 
+    @SuppressWarnings("unchecked")
     void appendToTail(V data) {
 
-        Node curr = this;
+        Node<V> curr = this;
 
         while (curr.next != null) {
             curr = curr.next;
         }
-        curr.next = new Node(data);
+        curr.next = new Node<V>(data);
     }
 
+    @SuppressWarnings("unchecked")
     public void print() {
         System.out.print(data);
 
-        Node curr = this.next;
+        Node<V> curr = this.next;
         while (curr != null) {
             System.out.print("->" + curr.data);
             curr = curr.next;
