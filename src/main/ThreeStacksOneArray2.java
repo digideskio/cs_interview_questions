@@ -30,7 +30,7 @@ public class ThreeStacksOneArray2 {
         }
     }
 
-    public void push(int data, int whichStack) {
+    public void push(int whichStack, int data) {
 
         if (freeSpaces == null) {
             return;

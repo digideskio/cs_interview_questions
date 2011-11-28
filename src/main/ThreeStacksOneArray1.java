@@ -10,7 +10,7 @@
  */
 public class ThreeStacksOneArray1 {
 
-    int stackIndices = { -1, -1, -1 };     // Indices of the top of each stack
+    int[] stackIndices = { -1, -1, -1 };     // Indices of the top of each stack
     int stackSize;                         // Maximum size of stack  
     int[] buffer;                          // Array containing 3 stacks.
 
@@ -25,14 +25,29 @@ public class ThreeStacksOneArray1 {
     }
 
     /**
+     * Returns the top value of the stack.
+     */
+    public int peek(int stackNumber) {
+
+        // If stack is empty, return -1.
+        int top = stackIndices[stackNumber];
+        if (top == -1) {
+            return -1;
+        }
+
+        // Otherwise, simply return value at the top of the stack.
+        return buffer[(stackNumber * stackSize) + top];
+    }
+
+    /**
      * Pushes a value to the top of the stack.
      */
     public void push(int stackNumber, int value) {
 
-        int top = stackIndices[stackNumber];
+        int top = stackIndices[stackNumber] + 1;
         
         // If stack is full, simply return
-        if (top == this.stackSize-1) {
+        if (top == this.stackSize) {
             return;
         }
 
@@ -49,8 +64,8 @@ public class ThreeStacksOneArray1 {
         int top = stackIndices[stackNumber];
 
         // If stack is empty, return -1.
-        if (stackIndices[stackNumber] == -1)) {
-            return;
+        if (stackIndices[stackNumber] == -1) {
+            return -1;
         }
 
         // Otherwise, return top of stack and decrement corresponding top.
@@ -59,23 +74,9 @@ public class ThreeStacksOneArray1 {
     }
 
     /**
-     * Peeks at top of a stack.
-     */
-    public int peek(int stackNumber) {
-
-        // If stack is empty, return -1.
-        if (stackIndices[stackNumber] == -1) {
-            return -1;
-        }
-
-        // Otherwise, simply return value at the top of the stack.
-        return buffer[(stackNumber * stackSize) + top];
-    }
-
-    /**
      * Checks if a stack is empty.
      */
-    public bool isEmpty(int stackNumber) {
+    public boolean isEmpty(int stackNumber) {
         if (stackIndices[stackNumber] == -1) {
             return true;
         }
