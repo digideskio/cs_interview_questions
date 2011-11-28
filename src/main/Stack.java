@@ -28,6 +28,9 @@ public class Stack<V> {
         top = n;
     }
 
+    public void print() {
+        top.print();
+    }
 
     public V peek() {
         return (top == null ? null : top.data);
@@ -35,5 +38,32 @@ public class Stack<V> {
 
     public boolean isEmpty() {
         return (top == null ? true : false);
+    }
+
+    /**
+     * Sorts an integer stack in ascending order
+     */
+    public static Stack<Integer> sort(Stack<Integer> stack) {
+        
+        if (stack == null) {
+            return null;
+        }
+
+        Stack<Integer> returnStack = new Stack<Integer>();
+        while (!stack.isEmpty()) {
+            int currElem = stack.pop();
+            if (returnStack.isEmpty() || returnStack.peek() <= currElem) {
+                returnStack.push(currElem);
+            } else {
+                while (returnStack.peek() > currElem) {
+                    stack.push(returnStack.pop());
+                    if (returnStack.isEmpty()) {
+                        break;
+                    }
+                }
+                returnStack.push(currElem);
+            }
+        }
+        return returnStack;
     }
 }

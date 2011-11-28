@@ -14,10 +14,14 @@ public class StacksAndQueues {
         Stack<Integer> s = new Stack<Integer>();
         s.push(10);
         s.push(20);
+        s.push(15);
+        s.push(12);
 
-        System.out.println(s.pop());
-        System.out.println(s.pop());
-        System.out.println(s.pop());
+        System.out.println("Before sorting...");
+        s.print();
+        System.out.println("\nAfter sorting...");
+        Stack<Integer> sSorted = Stack.sort(s);
+        sSorted.print();
 
         // Test Queue
         Queue<Integer> q = new Queue<Integer>();
@@ -107,6 +111,5 @@ public class StacksAndQueues {
         System.out.println("stack0 top: " + threeStacks2.peek(0));
         System.out.println("stack1 top: " + threeStacks2.peek(1));
         System.out.println("stack2 top: " + threeStacks2.peek(2));
-
     }
 }
