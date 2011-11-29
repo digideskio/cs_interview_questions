@@ -1,3 +1,7 @@
+package stacksandqueues;
+
+import linkedlists.*;
+
 /**
  * Class that implements 3 stacks using 1 array (Integer).
  *

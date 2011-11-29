@@ -1,3 +1,7 @@
+package stacksandqueues;
+
+import linkedlists.*;
+
 /**
  * Class implementing a Set of Stacks. Essentially, a single stack is used but
  * if the stacks reaches a a certain threshold, a new stack will be created.

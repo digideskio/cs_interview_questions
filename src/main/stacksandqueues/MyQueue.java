@@ -1,3 +1,5 @@
+package stacksandqueues;
+
 /**
  * Class that implements a queue using 2 stacks. 
  *

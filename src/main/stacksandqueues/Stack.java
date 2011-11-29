@@ -1,3 +1,7 @@
+package stacksandqueues;
+
+import linkedlists.*;
+
 /**
  * Class implementing a Stack
  *

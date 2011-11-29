@@ -7,8 +7,8 @@ package linkedlists;
  */
 public class Node<V> {
 
-    Node<V> next = null;
-    V data;
+    public Node<V> next = null;
+    public V data;
 
     public Node(V data) {
         this.data = data;

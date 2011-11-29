@@ -6,8 +6,8 @@ package linkedlists;
  * Class that represents an integer link list node.
  */
 public class IntNode {
-    IntNode next = null;
-    int data;
+    public IntNode next = null;
+    public int data;
 
     public IntNode(int d) {
         data = d;

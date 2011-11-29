@@ -1,3 +1,7 @@
+package stacksandqueues;
+
+import linkedlists.*;
+
 /**
  * Stack implementation that also keeps track of the minimum value in the Stack.
  * Uses Integer.

@@ -1,3 +1,7 @@
+package stacksandqueues;
+
+import linkedlists.*;
+
 /**
  * @author Chris Arriola
  *
