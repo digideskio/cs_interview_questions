@@ -28,7 +28,13 @@ public class Graph {
         return nodes;
     }
 
-    public int getSize() {
+    public void setAllNodesUnvisited() {
+        for (GraphNode node : nodes) {
+            node.setState(GraphState.UNVISITED);
+        }
+    }
+
+    public int size() {
         return nodes.size();
     }
 }

@@ -1,5 +1,6 @@
 package graph;
 
+import java.util.Stack;
 import java.util.Set;
 
 /**
@@ -24,9 +25,29 @@ public class Graphs {
             return false;
         }
 
-        // Do a depth-first search starting on n1 if n2 is connected, if
+        // Do a depth-first search (stack) starting on n1 if n2 is connected, if
         // so, then return true, otherwise, false.
-        // TODO: need to create a state (visited/unvisited) 
-        
+
+        Stack<GraphNode> stack = new Stack<GraphNode>();        // For performing depth-first seach
+        GraphNode currNode = n1;
+
+        do {
+            if (currNode == n2) {
+                return true;
+            }
+
+            Set<GraphNode> toNodes = currNode.getToNodes();
+            currNode.setState(GraphState.VISITED);
+
+            for (GraphNode node : toNodes) {
+                if (node.getState() == GraphState.UNVISITED) {
+                    stack.push(node);
+                }
+            }
+
+            currNode = stack.pop(); 
+        } while (!stack.isEmpty());
+
+        return false;
     }
 }
