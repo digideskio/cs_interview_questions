@@ -31,4 +31,31 @@ public class Trees {
         }
         return 1 + Math.min(minDepth(tree.left), minDepth(tree.right));
     }
+
+    /**
+     * Given a sorted Integer array (increasing order), this function 
+     * will create a binary tree with minimal height.
+     */
+    public static Tree<Integer> createMinBinaryTree(int[] array) {
+    
+        if (array == null) {
+            return null;
+        }
+
+        // Middle of the array is the node and then we use
+        // recursion for the left and the right child
+        Tree<Integer> root;
+        List<Integer> arrayList;
+        int[] leftArray, rightArray;
+        int mid;
+
+        mid = array.length/2;
+        arrayList = Arrays.asList(array).subList(0, mid);
+        leftArray = arrayList.subList(0, mid);
+        rightArray = (mid+1 == array.length ? null : arrayList.subList(mid+1, array.length));
+        root = new Tree(array[mid], createMinBinaryTree(leftArray),
+                                    createMinBinaryTree(rightArray));
+
+        return root;
+    }
 }
