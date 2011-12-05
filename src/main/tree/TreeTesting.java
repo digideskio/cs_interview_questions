@@ -27,6 +27,15 @@ public class TreeTesting {
         t8.left = t9;
 
         System.out.println(Trees.isBalanced(t1));
+
+        int[] a = { 1, 2, 3, 4, 5,
+                  6, 7, 8, 9, 10, 
+                };
+        Tree<Integer> treeA = Trees.createMinBinaryTree(a);
+        System.out.println(Trees.isBalanced(treeA));
+        System.out.println(treeA.value);
+        System.out.println(treeA.left.value);
+        System.out.println(treeA.right.value);
     }
 
 }
