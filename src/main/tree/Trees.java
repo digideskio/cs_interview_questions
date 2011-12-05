@@ -60,4 +60,13 @@ public class Trees {
 
         return root;
     }
+
+    /**
+     * Given a binary search tree, this function will create a linked list
+     * of all the nodes at each depth. The index of the ArrayList represents
+     * the depth in the tree.
+     */
+    public static ArrayList<Node<Integer>> createListAtDepth(Tree<Integer>) {
+
+    }
 }
