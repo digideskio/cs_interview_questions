@@ -1,5 +1,8 @@
 package tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Testing for Tree datastructure.
  *
@@ -36,6 +39,9 @@ public class TreeTesting {
         System.out.println(treeA.value);
         System.out.println(treeA.left.value);
         System.out.println(treeA.right.value);
+
+        List<ArrayList<Integer>> list = Trees.createListForEachDepth(treeA);        
+        System.out.println(list.size());
     }
 
 }

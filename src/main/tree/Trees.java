@@ -2,12 +2,17 @@ package tree;
 
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import linkedlists.*;
 
 /**
  * Contains Tree datastructure methods.
  */
 public class Trees {
+
+    private Trees() {}
 
     /**
      * Checks if a Tree is balanced.
@@ -66,7 +71,50 @@ public class Trees {
      * of all the nodes at each depth. The index of the ArrayList represents
      * the depth in the tree.
      */
-    public static ArrayList<Node<Integer>> createListAtDepth(Tree<Integer>) {
+    public static List<ArrayList<Integer>> createListForEachDepth(Tree<Integer> tree) {
+    
+        if (tree == null) {
+            return null;
+        }
 
+        List<ArrayList<Integer>> returnList = new ArrayList<ArrayList<Integer>>();
+        List<TreeNodeAndDepth> buffer = new LinkedList<TreeNodeAndDepth>();
+
+        // TODO: create returnLIst
+        int depth = maxDepth(tree);
+        for (int i = 0; i < depth; i++) {
+            returnList.add(new ArrayList<Integer>());
+        }
+
+        addToQueue(tree, buffer, 0);
+
+        for (TreeNodeAndDepth node : buffer) {
+            returnList.get(node.depth).add(node.value);
+        }
+
+        return returnList;
+    }
+
+    private static void addToQueue(Tree<Integer> tree, List<TreeNodeAndDepth> queue, int depth) {
+       
+        if (tree == null) {
+            return;
+        }
+
+        TreeNodeAndDepth elem = new TreeNodeAndDepth(tree.value, depth);
+        queue.add(elem);
+
+        addToQueue(tree.left, queue, depth+1);
+        addToQueue(tree.right, queue, depth+1);
+    }
+
+    private static class TreeNodeAndDepth {
+        
+        int value;
+        int depth;
+        TreeNodeAndDepth(int value, int depth) {
+            this.value = value;
+            this.depth = depth;
+        }
     }
 }
