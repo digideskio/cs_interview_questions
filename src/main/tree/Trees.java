@@ -95,6 +95,13 @@ public class Trees {
         return returnList;
     }
 
+    /**
+     * Finds the next node (in-order succesor) of a given node in a binary search tree where
+     * each node has a link to its parent.
+     */
+    public static Tree<Integer> inOrderSuccessor(Tree<Integer> tree) {
+    }
+
     private static void addToQueue(Tree<Integer> tree, List<TreeNodeAndDepth> queue, int depth) {
        
         if (tree == null) {
