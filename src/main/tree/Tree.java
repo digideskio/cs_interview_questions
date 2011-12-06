@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class Tree<V> {
     public V value;
+    public Tree<V> parent = null;
     public Tree<V> left = null;
     public Tree<V> right = null;
 
@@ -18,5 +19,12 @@ public class Tree<V> {
         this.value = val;
         this.left = left;
         this.right = right;
+
+        if (left != null) {
+            this.left.parent = this;
+        }
+        if (right != null) {
+            this.right.parent = this;
+        }
     }
 }

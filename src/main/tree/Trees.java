@@ -100,6 +100,29 @@ public class Trees {
      * each node has a link to its parent.
      */
     public static Tree<Integer> inOrderSuccessor(Tree<Integer> tree) {
+
+        Tree<Integer> curr = tree;
+        Tree<Integer> parent = tree.parent;
+
+        if (curr.right != null) {
+            curr = curr.right;
+            while (curr.left != null) {
+                curr = curr.left;
+            }
+            return curr;
+        }
+
+        if (curr == parent.right) {
+            while (parent != null && curr != parent.left) {
+                curr = parent;
+                parent = curr.parent;
+            }
+
+            return parent;
+        }
+
+        // If it is the left node of it's parent, simply return the parent.
+        return parent;
     }
 
     private static void addToQueue(Tree<Integer> tree, List<TreeNodeAndDepth> queue, int depth) {
