@@ -125,6 +125,42 @@ public class Trees {
         return parent;
     }
 
+    /**
+     * Finds the FIRST common ancestor of 2 nodes in a tree.
+     */
+    public static Tree<Integer> commonAncestor(Tree<Integer> tree, Tree<Integer> t1, Tree<Integer> t2) {
+        if (!contains(tree, t1) && !contains(tree, t2)) {
+            return null;
+        }
+
+        Tree<Integer> curr = tree;
+        while (true) {
+            if (contains(tree.left, t1) && contains(tree.left, t2)) {
+                curr = tree.left;
+            } else if (contains(tree.right, t1) && contains(tree.right, t2)) {
+                curr = tree.right;
+            }
+            break;
+        }
+        return curr;
+    }
+
+    /**
+     * Checks if tree contains t.
+     */
+    private static boolean contains(Tree<Integer> tree, Tree<Integer> t) {
+        
+        if (tree == null || t == null) {
+            return false;
+        }
+
+        if (tree == t) {
+            return true;
+        }
+
+        return (contains(tree.left, t) || contains(tree.right, t));
+    }
+
     private static void addToQueue(Tree<Integer> tree, List<TreeNodeAndDepth> queue, int depth) {
        
         if (tree == null) {
