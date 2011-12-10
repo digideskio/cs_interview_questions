@@ -146,6 +146,53 @@ public class Trees {
     }
 
     /**
+     * Given a number, this function will print all paths in a binary tree 
+     * whose values add up to the sum.
+     */
+    public static void printPaths(Tree<Integer> tree, int sum) {
+
+        if (tree == null) {
+            return;
+        }
+
+        if (tree.value < sum) {
+            // Call function
+            ArrayList<Integer> a = new ArrayList<Integer>();
+            a.add(tree.value);
+            printPaths(tree.left, a, sum);
+            printPaths(tree.right, a, sum);
+        }
+        printPaths(tree.left, sum);
+        printPaths(tree.right, sum);
+    }
+
+    private static void printPaths(Tree<Integer> tree, List<Integer> prev, int sum) {
+
+        int currSum = 0;
+
+        prev.add(tree.value);
+        for (int i = 0; i < prev.size(); i++) {
+            currSum += prev.get(i);
+        }
+
+        if (currSum == sum) {
+            for (int i = 0; i < prev.size(); i++) {
+                if (i < prev.size()-1) {
+                    System.out.print(prev.get(i) + "->");
+                } else {
+                    System.out.println(prev.get(i));
+                }
+            }
+        } else if (currSum > sum) {
+            return;
+        } else {
+            prev.add(tree.value);
+            printPaths(tree.left, prev, sum);
+            printPaths(tree.right, prev, sum);
+        }
+    }
+
+    /**
      * Checks if tree contains t.
      */
     private static boolean contains(Tree<Integer> tree, Tree<Integer> t) {
