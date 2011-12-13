@@ -8,6 +8,42 @@ package bitmanipulation;
 public class BitManipulation {
 
     /**
+     * Given a decimal number, this function will return the binary
+     * representation of that number as a String.
+     */
+    public static String printBinary(String number) {
+        int integer = Integer.parseInt(number.substring(0, number.indexOf(".")));
+        double decimal = Double.parseDouble(number.substring(number.indexOf(".")));
+
+        StringBuilder integerResult = new StringBuilder();
+        StringBuilder decimalResult = new StringBuilder();
+        int i = 0;
+
+        // Get binary representation of integer
+        while (integer != 0) {
+            i = integer % 2;
+            integer = integer / 2;
+            integerResult.insert(0, i);
+        }
+
+        // Get binary representation of decimal
+        while (decimal > 0) {
+            decimal = decimal*2;
+            if (decimal >= 1) {
+                i = 1;
+                decimal--;
+            } else {
+                i = 0;
+            }
+            decimalResult.append(i);
+
+            if (decimalResult.length() > 32) return "ERROR";
+        }
+
+        return integerResult.toString() + "." + decimalResult.toString();
+    }
+
+    /**
      * Method that sets all bits between i and j in N equal to M.
      */
     public static int setSubBits(int N, int M, int i, int j) {
@@ -38,5 +74,6 @@ public class BitManipulation {
 
     public static void main(String[] args) {
         System.out.println(setSubBits(256, 5, 1, 3));
+        System.out.println(printBinary("4.5"));
     }
 }
