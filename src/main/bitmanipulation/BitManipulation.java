@@ -72,8 +72,103 @@ public class BitManipulation {
         return N;
     }
 
+    private static int getNextSmallIntSameBits(int n) {
+
+        int index = 0;
+        int countZeros = 0;
+
+        // Find the first 0
+        while (getBit(n, index) == 1) index++;
+
+        // Turn off the next 1
+        while (getBit(n, index) == 0) {
+            index++;
+            countZeros++;
+        }
+        n = setBit(n, index, false);
+
+        // Turn on previous 0
+        index--;
+        n = setBit(n, index, true);
+        countZeros--;
+        
+        // Set ones
+        for (int i = index-1; i >= countZeros; i--) {
+            n = setBit(n, i, true);
+        }
+
+        // Set zeros
+        for (int i = countZeros-1; i >= 0; i--) {
+            n = setBit(n, i, false);
+        }
+
+        return n;
+    }
+
+    private static int getNextLargeIntSameBits(int n) {
+
+        int index = 0;
+        int countOnes = 0;
+
+        // Find the first 1 
+        while (getBit(n, index) == 0) index++;
+
+        // Turn on the next 0
+        while (getBit(n, index) == 1) {
+            index++;
+            countOnes++;
+        }
+        n = setBit(n, index, true);
+
+        // Turn off the previous 1
+        index--;
+        n = setBit(n, index, false);
+        countOnes--;
+
+        // Set zeros
+        for (int i = index-1; i >= countOnes; i--) {
+            n = setBit(n, i, false);
+        }
+
+        // Set ones
+        for (int i = countOnes-1; i >= 0; i--) {
+            n = setBit(n, i, true);
+        }
+
+        return n;
+    }
+
+    private static int getBit(int n, int index) {
+
+        if (index < 0 || index > 31) return -1;
+
+        return ((n & (1 << index)) > 0 ? 1 : 0);
+    }
+
+    private static int setBit(int n, int index, boolean val) {
+
+        if (index < 0 || index > 31) return -1;
+
+        int returnVal = -1;
+        if (val) {
+            returnVal = (n | (1 << index)); 
+        } else {
+            returnVal = (n & ~(1 << index));
+        }
+        return returnVal;
+    }
+
     public static void main(String[] args) {
         System.out.println(setSubBits(256, 5, 1, 3));
         System.out.println(printBinary("4.5"));
+
+        int n = 4;
+        int m = 5;
+
+        System.out.println(getNextSmallIntSameBits(n));
+        System.out.println(getNextSmallIntSameBits(m));
+
+        System.out.println(getNextLargeIntSameBits(n));
+        System.out.println(getNextLargeIntSameBits(m));
     }
 }
