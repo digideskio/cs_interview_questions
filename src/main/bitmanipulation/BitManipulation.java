@@ -72,7 +72,7 @@ public class BitManipulation {
         return N;
     }
 
-    private static int getNextSmallIntSameBits(int n) {
+    public static int getNextSmallIntSameBits(int n) {
 
         int index = 0;
         int countZeros = 0;
@@ -105,7 +105,7 @@ public class BitManipulation {
         return n;
     }
 
-    private static int getNextLargeIntSameBits(int n) {
+    public static int getNextLargeIntSameBits(int n) {
 
         int index = 0;
         int countOnes = 0;
@@ -136,6 +136,10 @@ public class BitManipulation {
         }
 
         return n;
+    }
+
+    public static int swapOddAndEvenBits(int n) {
+        return (((n << 1) & 0xAAAAAAAA) | ((n >> 1) & 0x55555555));
     }
 
     private static int getBit(int n, int index) {
